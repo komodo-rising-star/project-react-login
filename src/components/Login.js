@@ -1,40 +1,46 @@
-import React, { Component } from "react";
-import axios from "axios";
-export default class Login extends Component {
-  constructor()
+import React from "react";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment
+} from "semantic-ui-react";
 
-  submitPost = event => {
-    event.preventDefault();
-    axios
-      .post(`https://cobacoba-hayepe.herokuapp.com/user/login`, {
-        email: "babang@gmail.com",
-        password: "password"
-      })
-      .then(result => console.log(result))
-      .catch(error => console.log(error));
-  };
+const Login = () => (
+  <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as="h2" color="teal" textAlign="center">
+        <Image src="/logo.png" /> Log-in to your account
+      </Header>
+      <Form size="large">
+        <Segment stacked>
+          <Form.Input
+            fluid
+            icon="user"
+            iconPosition="left"
+            placeholder="E-mail address"
+          />
+          <Form.Input
+            fluid
+            icon="lock"
+            iconPosition="left"
+            placeholder="Password"
+            type="password"
+          />
 
-  logOut = event => {
-    event.preventDefault();
-    axios
-      .get(`https://cobacoba-hayepe.herokuapp.com/user/logout`)
-      .then(result => console.log(result))
-      .catch(error => console.log(error));
-  };
-  render() {
-    return (
-      <div>
-        <form>
-          <label htmlFor=""> E- Mail </label>
-          <input type="text" placeholder="email" />
-          <br />
-          <label htmlFor=""> Password </label>
-          <input type="text" placeholder="password" />
-          <br />
-          <button onClick={this.submitPost}>Submit</button>
-          <button onClick={this.logOut}>Cancel</button>
-        </form>
-      </div>
-    );
-  }
-}
+          <Button color="teal" fluid size="large">
+            Login
+          </Button>
+        </Segment>
+      </Form>
+      <Message>
+        New to us? <a href="#">Sign Up</a>
+      </Message>
+    </Grid.Column>
+  </Grid>
+);
+
+export default Login;
