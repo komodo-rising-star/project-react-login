@@ -18,7 +18,7 @@ function App() {
           <Login />
         </Route>
 
-        <PrivateRoute path="/banner">
+        <PrivateRoute path="/home">
           <Banner />
         </PrivateRoute>
       </Switch>
