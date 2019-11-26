@@ -12,7 +12,8 @@ export class Navbar extends Component {
       <div>
         <Menu position="right">
           <Menu.Item name="Komodo Rising Star" />
-          <Menu.Item name="home" as={Link} to="/" />
+          <Menu.Item name="home" as={Link} to="/home" />
+          <Menu.Item name="profile" as={Link} to="/profile" />
           <Menu.Menu position="right">
             <Menu.Item name="log in" as={Link} to="/login" />
             <Menu.Item name="sign up" as={Link} to="/signup" />
