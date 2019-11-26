@@ -9,11 +9,13 @@ import {
   Segment
 } from "semantic-ui-react";
 
+import Logo from "../image/star.jpeg"
+
 const Login = () => (
   <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as="h2" color="teal" textAlign="center">
-        <Image src="/logo.png" /> Log-in to your account
+        <Image src={Logo}/> Login to your account
       </Header>
       <Form size="large">
         <Segment stacked>

@@ -4,10 +4,12 @@ import "./App.css";
 // import Registration from "./components/Registration";
 
 import Login from "./components/Login";
+import Register from "./components/Registration"
 
 function App() {
   return (
     <div>
+      <Register/>
       <Login />
     </div>
   );
