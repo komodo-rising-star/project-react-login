@@ -32,13 +32,13 @@
   text-align: center;
 }
 
-.choose {
-  text-align: center;
-  color: teal;
-  padding: 10px;
-}
 .text {
   text-align: center;
   padding: 150px;
   color: aliceblue;
+}
+.choose {
+  text-align: center;
+  color: teal;
+  padding: 10px;
 }
