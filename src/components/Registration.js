@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import Logo from "../image/star.jpeg"
+import Logo from "../image/star.jpeg";
 
 import {
   Button,
@@ -11,7 +11,7 @@ import {
   Image,
   Message,
   Segment
-} from "semantic-ui-react"
+} from "semantic-ui-react";
 export default class Registration extends Component {
   constructor(props) {
     super(props);
@@ -93,88 +93,104 @@ export default class Registration extends Component {
 
     return (
       <div>
-      <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
-     <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as="h2" color="teal" textAlign="center">
-        <Image src={Logo}/> Registration Form
-      </Header>
-        <Form.Input
-          icon="user"
-          type="text"
-          placeholder="First Name"
-          name="firstName"
-          iconPosition="left"
-          value={firstName}
-          onChange={this.handleChange}
-        />
-        <br />
-        <Form.Input
-          icon="user"
-          type="text"
-          placeholder="Last Name"
-          name="lastName"
-          iconPosition="left"
-          value={lastName}
-          onChange={this.handleChange}
-        />
-        <br />
-        <Form.Input
-          icon="calendar alternate outline"
-          type="date"
-          placeholder="date "
-          name="dateOfBirth"
-          iconPosition="left"
-          value={dateOfBirth}
-          onChange={this.handleChange}
-        />
-        <br />
-        <Form.Input
-          icon="phone"
-          type="tel"
-          placeholder="Mobile Number"
-          name="mobileNumber"
-          iconPosition="left"
-          value={mobileNumber}
-          onChange={this.handleChange}
-        />
-        <br />
-        <Form.Input
-          icon="user"
-          type="text"
-          placeholder="Gender"
-          name="gender"
-          iconPosition="left"
-          value={gender}
-          onChange={this.handleChange}
-        />
-        <br />
-        <Form.Input
-        icon="mail"
-          type="email"
-          placeholder="email"
-          name="email"
-          iconPosition="left"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <br />
-        <Form.Input
-          icon="lock"
-          type="password"
-          placeholder="Password"
-          id="password"
-          name="password"
-          iconPosition="left"
-          value={password}
-          onChange={this.handleChange}
-        />
-        <br />
-        <input type="checkbox" onClick={this.showPassword} /> Show Password
-        <br />
-        <button onClick={this.submitPost}>Submit</button>
-        <button>Cancel</button>
-        </Grid.Column>
-  </Grid>
+        <Grid
+          textAlign="center"
+          style={{ height: "100vh" }}
+          verticalAlign="middle"
+        >
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as="h2" color="teal" textAlign="center">
+              <Image src={Logo} /> Registration Form
+            </Header>
+            <Form size="large">
+              <Segment>
+                <Form.Input
+                  icon="user"
+                  type="text"
+                  placeholder="First Name"
+                  name="firstName"
+                  iconPosition="left"
+                  value={firstName}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <Form.Input
+                  icon="user"
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastName"
+                  iconPosition="left"
+                  value={lastName}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <Form.Input
+                  icon="calendar alternate outline"
+                  type="date"
+                  placeholder="date "
+                  name="dateOfBirth"
+                  iconPosition="left"
+                  value={dateOfBirth}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <Form.Input
+                  icon="phone"
+                  type="tel"
+                  placeholder="Mobile Number"
+                  name="mobileNumber"
+                  iconPosition="left"
+                  value={mobileNumber}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <Form.Input
+                  icon="user"
+                  type="text"
+                  placeholder="Gender"
+                  name="gender"
+                  iconPosition="left"
+                  value={gender}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <Form.Input
+                  icon="mail"
+                  type="email"
+                  placeholder="email"
+                  name="email"
+                  iconPosition="left"
+                  value={email}
+                  onChange={this.handleChange}
+                />
+                <br />
+                <Form.Input
+                  icon="lock"
+                  type="password"
+                  placeholder="Password"
+                  id="password"
+                  name="password"
+                  iconPosition="left"
+                  value={password}
+                  onChange={this.handleChange}
+                />
+                <input type="checkbox" onClick={this.showPassword} /> Show
+                Password
+              </Segment>
+              <Segment>
+                <br />
+                <Button
+                  color="teal"
+                  fluid
+                  size="large"
+                  onClick={this.submitPost}
+                >
+                  Submit
+                </Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }
