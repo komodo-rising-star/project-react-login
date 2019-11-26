@@ -11,7 +11,8 @@ import {
   Header,
   Image,
   Message,
-  Segment
+  Segment,
+
 } from "semantic-ui-react";
 class Registration extends Component {
   constructor(props) {
@@ -119,7 +120,7 @@ class Registration extends Component {
         style={{ height: "100vh" }}
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ width: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
             <Image src={Logo} /> Registration Form
           </Header>
