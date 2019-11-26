@@ -11,14 +11,13 @@ export default class Registration extends Component {
       dateOfBirth: "",
       gender: "",
       email: "",
-      password: ""
+      password: "",
+      errorStatus: null
     };
   }
 
   submitPost = event => {
     event.preventDefault();
-
-    let tanggal = Date.now().toLocaleDateString;
 
     const data = {
       mobileNumber: this.state.mobileNumber,
@@ -47,8 +46,20 @@ export default class Registration extends Component {
         });
       })
       .catch(err => {
-        console.log(err);
-        alert(err);
+        console.log(err.message);
+        // alert(err.message);
+        if (err.response.status === 422) {
+          console.log("Data Duplicate detected!");
+          this.setState({
+            errorStatus: 422
+          });
+        }
+        if (err.response.status === 500) {
+          console.log("Server Side Error!");
+          this.setState({
+            errorStatus: 500
+          });
+        }
       });
 
     // console.log(this.state);
@@ -79,8 +90,13 @@ export default class Registration extends Component {
       email,
       password,
       mobileNumber,
-      dateOfBirth
+      dateOfBirth,
+      errorStatus
     } = this.state;
+
+    if (errorStatus !== null) {
+      return <div>{errorStatus}</div>;
+    }
 
     return (
       <div>
@@ -129,7 +145,7 @@ export default class Registration extends Component {
           onChange={this.handleChange}
         />
         <br />
-        <label htmlFor=""> E- Mail </label>
+        <label htmlFor=""> Email </label>
         <input
           type="email"
           placeholder="email"
@@ -150,7 +166,7 @@ export default class Registration extends Component {
         <input type="checkbox" onClick={this.showPassword} /> Show Password
         <br />
         <button onClick={this.submitPost}>Submit</button>
-        <button>Cancel</button>
+        <button>Cancel</button>}
       </div>
     );
   }
