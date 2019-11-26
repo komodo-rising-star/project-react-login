@@ -11,9 +11,9 @@ import {
   Header,
   Image,
   Message,
-  Segment,
-
+  Segment
 } from "semantic-ui-react";
+
 class Registration extends Component {
   constructor(props) {
     super(props);
@@ -109,10 +109,6 @@ class Registration extends Component {
       dateOfBirth,
       errorStatus
     } = this.state;
-
-    if (errorStatus !== null) {
-      return <div>{errorStatus}</div>;
-    }
 
     return (
       <Grid
