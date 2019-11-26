@@ -1,21 +1,28 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 
+import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
-import Registration from "./components/Registration";
+// import Registration from "./components/Registration";
+import NavBar from "./components/NavBar";
+import Banner from "./components/Banner";
 
-// import Login from "./components/Login";
-// import NavBar from "./components/NavBar";
-
-// import NavAfterLog from "./components/NavAfterLog";
-// import Banner from "./components/Banner";
 function App() {
   return (
-    <div>
-      <Login />
-      <hr />
-      <Registration />{" "}
-    </div>
+    <BrowserRouter>
+      <NavBar />
+
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+
+        <PrivateRoute path="/banner">
+          <Banner />
+        </PrivateRoute>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
