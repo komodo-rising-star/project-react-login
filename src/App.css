@@ -20,3 +20,12 @@
 .App-link {
   color: #09d3ac;
 }
+
+.banner {
+  background-color: turquoise;
+  height: 95vh
+}
+.welcome {
+  color: aliceblue;
+  padding: 50px;
+}
