@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 import Logo from "../image/star.jpeg";
 
@@ -10,9 +11,10 @@ import {
   Header,
   Image,
   Message,
-  Segment
+  Segment,
+
 } from "semantic-ui-react";
-export default class Registration extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,12 +24,14 @@ export default class Registration extends Component {
       dateOfBirth: "",
       gender: "",
       email: "",
-      password: ""
+      password: "",
+      errorStatus: null
     };
   }
 
   submitPost = event => {
     event.preventDefault();
+    // this.props.history.push("/");
 
     const data = {
       mobileNumber: this.state.mobileNumber,
@@ -54,10 +58,23 @@ export default class Registration extends Component {
           email: "",
           password: ""
         });
+        this.props.history.push("/");
       })
       .catch(err => {
-        console.log(err);
-        alert(err);
+        console.log(err.message);
+        // alert(err.message);
+        if (err.response.status === 422) {
+          console.log("Data Duplicate detected!");
+          this.setState({
+            errorStatus: 422
+          });
+        }
+        if (err.response.status === 500) {
+          console.log("Server Side Error!");
+          this.setState({
+            errorStatus: 500
+          });
+        }
       });
 
     // console.log(this.state);
@@ -81,6 +98,7 @@ export default class Registration extends Component {
   }
 
   render() {
+    console.log(this.props);
     const {
       firstName,
       lastName,
@@ -88,110 +106,111 @@ export default class Registration extends Component {
       email,
       password,
       mobileNumber,
-      dateOfBirth
+      dateOfBirth,
+      errorStatus
     } = this.state;
 
+    if (errorStatus !== null) {
+      return <div>{errorStatus}</div>;
+    }
+
     return (
-      <div>
-        <Grid
-          textAlign="center"
-          style={{ height: "100vh" }}
-          verticalAlign="middle"
-        >
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as="h2" color="teal" textAlign="center">
-              <Image src={Logo} /> Registration Form
-            </Header>
-            <Form size="large">
-              <Segment>
-                <Form.Input
-                  icon="user"
-                  type="text"
-                  placeholder="First Name"
-                  name="firstName"
-                  iconPosition="left"
-                  value={firstName}
-                  onChange={this.handleChange}
-                />
-                <br />
-                <Form.Input
-                  icon="user"
-                  type="text"
-                  placeholder="Last Name"
-                  name="lastName"
-                  iconPosition="left"
-                  value={lastName}
-                  onChange={this.handleChange}
-                />
-                <br />
-                <Form.Input
-                  icon="calendar alternate outline"
-                  type="date"
-                  placeholder="date "
-                  name="dateOfBirth"
-                  iconPosition="left"
-                  value={dateOfBirth}
-                  onChange={this.handleChange}
-                />
-                <br />
-                <Form.Input
-                  icon="phone"
-                  type="tel"
-                  placeholder="Mobile Number"
-                  name="mobileNumber"
-                  iconPosition="left"
-                  value={mobileNumber}
-                  onChange={this.handleChange}
-                />
-                <br />
-                <Form.Input
-                  icon="user"
-                  type="text"
-                  placeholder="Gender"
-                  name="gender"
-                  iconPosition="left"
-                  value={gender}
-                  onChange={this.handleChange}
-                />
-                <br />
-                <Form.Input
-                  icon="mail"
-                  type="email"
-                  placeholder="email"
-                  name="email"
-                  iconPosition="left"
-                  value={email}
-                  onChange={this.handleChange}
-                />
-                <br />
-                <Form.Input
-                  icon="lock"
-                  type="password"
-                  placeholder="Password"
-                  id="password"
-                  name="password"
-                  iconPosition="left"
-                  value={password}
-                  onChange={this.handleChange}
-                />
-                <input type="checkbox" onClick={this.showPassword} /> Show
-                Password
-              </Segment>
-              <Segment>
-                <br />
-                <Button
-                  color="teal"
-                  fluid
-                  size="large"
-                  onClick={this.submitPost}
-                >
-                  Submit
-                </Button>
-              </Segment>
-            </Form>
-          </Grid.Column>
-        </Grid>
-      </div>
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ width: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            <Image src={Logo} /> Registration Form
+          </Header>
+          <Form size="large">
+            <Segment stacked>
+              <Form.Input
+                icon="user"
+                type="text"
+                placeholder="First Name"
+                name="firstName"
+                iconPosition="left"
+                value={firstName}
+                onChange={this.handleChange}
+              />
+              <br />
+              <Form.Input
+                icon="user"
+                type="text"
+                placeholder="Last Name"
+                name="lastName"
+                iconPosition="left"
+                value={lastName}
+                onChange={this.handleChange}
+              />
+              <br />
+              <Form.Input
+                icon="calendar alternate outline"
+                type="date"
+                placeholder="date "
+                name="dateOfBirth"
+                iconPosition="left"
+                value={dateOfBirth}
+                onChange={this.handleChange}
+              />
+              <br />
+              <Form.Input
+                icon="phone"
+                type="tel"
+                placeholder="Mobile Number"
+                name="mobileNumber"
+                iconPosition="left"
+                value={mobileNumber}
+                onChange={this.handleChange}
+              />
+              <br />
+              <Form.Input
+                icon="user"
+                type="text"
+                placeholder="Gender"
+                name="gender"
+                iconPosition="left"
+                value={gender}
+                onChange={this.handleChange}
+              />
+              <br />
+              <Form.Input
+                icon="mail"
+                type="email"
+                placeholder="email"
+                name="email"
+                iconPosition="left"
+                value={email}
+                onChange={this.handleChange}
+              />
+              <br />
+              <Form.Input
+                icon="lock"
+                type="password"
+                placeholder="Password"
+                id="password"
+                name="password"
+                iconPosition="left"
+                value={password}
+                onChange={this.handleChange}
+              />
+              <br />
+              <div class="ui checkbox">
+                <input type="checkbox" onClick={this.showPassword} />
+                <label>Show Password</label>
+              </div>
+              <br />
+            </Segment>
+            <Button color="teal" fluid size="large" onClick={this.submitPost}>
+              Register
+            </Button>
+          </Form>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
+
+export default withRouter(Registration);
