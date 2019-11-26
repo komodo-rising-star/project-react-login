@@ -18,8 +18,6 @@ export default class Registration extends Component {
   submitPost = event => {
     event.preventDefault();
 
-    let tanggal = Date.now().toLocaleDateString;
-
     const data = {
       mobileNumber: this.state.mobileNumber,
       firstName: this.state.firstName,
