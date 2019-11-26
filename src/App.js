@@ -15,7 +15,7 @@ function App() {
       <NavBar />
 
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/home">
           <Banner />
         </Route>
         <Route path="/login">
@@ -25,7 +25,7 @@ function App() {
           <Registration />
         </Route>
 
-        <PrivateRoute path="/afterlog">
+        <PrivateRoute path="/profile">
           <AfterLog />
         </PrivateRoute>
       </Switch>

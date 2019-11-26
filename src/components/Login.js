@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import {
   Button,
   Form,
@@ -31,14 +32,21 @@ class Login extends Component {
   submitPost = event => {
     event.preventDefault();
 
-    const { email, password } = this.state;
+    const { email, password, isLogin, error } = this.state;
     axios
       .post(`https://cobacoba-hayepe.herokuapp.com/user/login`, {
         email,
         password
       })
-      .then(result => console.log(result))
-      .catch(error => console.log(error));
+      .then(result => {
+        console.log(result);
+        this.setState({ isLogin: true });
+      })
+      .then(<Redirect to="/profile" />)
+      .catch(err => {
+        console.log(err);
+        this.setState({ error });
+      });
   };
 
   showPassword() {
@@ -90,7 +98,9 @@ class Login extends Component {
               </Button>
             </Segment>
           </Form>
-          <Message>New to us? Sign Up</Message>
+          <Message>
+            New to us? <Link to="/signup">Sign Up</Link>
+          </Message>
         </Grid.Column>
       </Grid>
     );
