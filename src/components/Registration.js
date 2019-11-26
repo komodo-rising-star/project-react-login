@@ -168,6 +168,7 @@ export default class Registration extends Component {
           value={password}
           onChange={this.handleChange}
         />
+        <br />
         <input type="checkbox" onClick={this.showPassword} /> Show Password
         <br />
         <button onClick={this.submitPost}>Submit</button>
