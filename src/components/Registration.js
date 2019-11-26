@@ -135,7 +135,6 @@ class Registration extends Component {
                 value={firstName}
                 onChange={this.handleChange}
               />
-              <br />
               <Form.Input
                 icon="user"
                 type="text"
@@ -145,7 +144,6 @@ class Registration extends Component {
                 value={lastName}
                 onChange={this.handleChange}
               />
-              <br />
               <Form.Input
                 icon="calendar alternate outline"
                 type="date"
@@ -155,7 +153,6 @@ class Registration extends Component {
                 value={dateOfBirth}
                 onChange={this.handleChange}
               />
-              <br />
               <Form.Input
                 icon="phone"
                 type="tel"
@@ -165,7 +162,6 @@ class Registration extends Component {
                 value={mobileNumber}
                 onChange={this.handleChange}
               />
-              <br />
               <Form.Input
                 icon="user"
                 type="text"
@@ -175,7 +171,6 @@ class Registration extends Component {
                 value={gender}
                 onChange={this.handleChange}
               />
-              <br />
               <Form.Input
                 icon="mail"
                 type="email"
@@ -185,7 +180,6 @@ class Registration extends Component {
                 value={email}
                 onChange={this.handleChange}
               />
-              <br />
               <Form.Input
                 icon="lock"
                 type="password"
@@ -196,12 +190,10 @@ class Registration extends Component {
                 value={password}
                 onChange={this.handleChange}
               />
-              <br />
               <div class="ui checkbox">
                 <input type="checkbox" onClick={this.showPassword} />
                 <label>Show Password</label>
               </div>
-              <br />
             </Segment>
             <Button color="teal" fluid size="large" onClick={this.submitPost}>
               Register
