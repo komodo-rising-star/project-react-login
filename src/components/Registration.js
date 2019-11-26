@@ -4,7 +4,9 @@ import axios from "axios";
 export default class Registration extends Component {
   submitPost = event => {
     event.preventDefault();
+
     let tanggal = Date.now().toLocaleDateString;
+
     const data = {
       mobileNumber: "02188888888",
       firstName: "babang",

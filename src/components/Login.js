@@ -1,17 +1,23 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 export default class Login extends Component {
-  //   axios.post(`https://cobacoba-hayepe.herokuapp.com/user/login`, {
-  //     {
-  // 	email: your_email,
-  // 	password: your_password
-  // }
-  // })
-  //       .then(result => console.log(result))
-  //       .catch(error => console.log(error));
-  //   };
   submitPost = event => {
     event.preventDefault();
+    axios
+      .post(`https://cobacoba-hayepe.herokuapp.com/user/login`, {
+        email: "babang@gmail.com",
+        password: "password"
+      })
+      .then(result => console.log(result))
+      .catch(error => console.log(error));
+  };
+
+  logOut = event => {
+    event.preventDefault();
+    axios
+      .get(`https://cobacoba-hayepe.herokuapp.com/user/logout`)
+      .then(result => console.log(result))
+      .catch(error => console.log(error));
   };
   render() {
     return (
@@ -23,8 +29,8 @@ export default class Login extends Component {
           <label htmlFor=""> Password </label>
           <input type="text" placeholder="password" />
           <br />
-          <button>Submit</button>
-          <button>Cancel</button>
+          <button onClick={this.submitPost}>Submit</button>
+          <button onClick={this.logOut}>Cancel</button>
         </form>
       </div>
     );
