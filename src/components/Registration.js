@@ -13,6 +13,7 @@ import {
   Segment,
 
 } from "semantic-ui-react";
+
 class Registration extends Component {
   constructor(props) {
     super(props);
@@ -106,12 +107,7 @@ class Registration extends Component {
       password,
       mobileNumber,
       dateOfBirth,
-      errorStatus
     } = this.state;
-
-    if (errorStatus !== null) {
-      return <div>{errorStatus}</div>;
-    }
 
     return (
       <Grid
