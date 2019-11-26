@@ -7,6 +7,7 @@ import Login from "./components/Login";
 // import Registration from "./components/Registration";
 import NavBar from "./components/NavBar";
 import Banner from "./components/Banner";
+import AfterLog from "./components/BannerAfterLog";
 
 function App() {
   return (
@@ -14,12 +15,15 @@ function App() {
       <NavBar />
 
       <Switch>
+        <Route exact path="/">
+          <Banner />
+        </Route>
         <Route path="/login">
           <Login />
         </Route>
 
-        <PrivateRoute path="/home">
-          <Banner />
+        <PrivateRoute path="/afterlog">
+          <AfterLog />
         </PrivateRoute>
       </Switch>
     </BrowserRouter>
