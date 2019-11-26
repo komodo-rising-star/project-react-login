@@ -3,7 +3,8 @@ import "./App.css";
 // import Login from "./components/Login";
 // import Registration from "./components/Registration";
 import NavAfterLog from "./components/NavAfterLog";
-import BannerAfterLog from "./components/BannerAfterLog"
+// import BannerAfterLog from "./components/BannerAfterLog"
+import Banner from "./components/Banner"
 
 // import Login from "./components/Login";
 
@@ -12,7 +13,8 @@ function App() {
     <div>
       {/* <Login /> */}
       <NavAfterLog/>
-      <BannerAfterLog/>
+      <Banner/>
+      {/* <BannerAfterLog/> */}
     </div>
   );
 }

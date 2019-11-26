@@ -22,16 +22,23 @@
 }
 
 .banner {
-  background-color: turquoise;
+  background-color: teal;
   height: 95vh
 }
+
 .welcome {
-  color: aliceblue;
+  color: teal;
   padding: 50px;
+  text-align: center;
 }
 
 .choose {
   text-align: center;
   color: teal;
   padding: 10px;
+}
+.text {
+  text-align: center;
+  padding: 150px;
+  color: aliceblue;
 }
