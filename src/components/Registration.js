@@ -61,7 +61,7 @@ export default class Registration extends Component {
   };
 
   showPassword() {
-    const x = typeof input;
+    const x = document.getElementById("password");
     if (x.type === "password") {
       x.type = "text";
     } else {
@@ -140,11 +140,12 @@ export default class Registration extends Component {
         <input
           type="password"
           placeholder="Password"
+          id="password"
           name="password"
           value={password}
           onChange={this.handleChange}
         />
-        <input type="checkbox" onclick="showPassword()" /> Show Password
+        <input type="checkbox" onClick={this.showPassword} /> Show Password
         <br />
         <button onClick={this.submitPost}>Submit</button>
         <button>Cancel</button>
