@@ -41,9 +41,9 @@ class Login extends Component {
       .then(result => {
         console.log(result);
         this.setState({ isLogin: result.data.isLoggedIn });
-        // alert(
-        //   `Welcome, ${result.data.getUser.firstName} ${result.data.getUser.lastName} `
-        // );
+        alert(
+          `Welcome, ${result.data.getUser.firstName} ${result.data.getUser.lastName} `
+        );
         this.props.history.push("/profile");
       })
       .catch(err => {
