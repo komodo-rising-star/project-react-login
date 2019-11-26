@@ -11,16 +11,10 @@ import {
   Header,
   Image,
   Message,
-<<<<<<< HEAD
   Segment,
 
 } from "semantic-ui-react";
 class Registration extends Component {
-=======
-  Segment
-} from "semantic-ui-react";
-export default class Registration extends Component {
->>>>>>> ced3c06fce95ba3054e4b86ad38f8e1c22a15321
   constructor(props) {
     super(props);
     this.state = {
