@@ -3,7 +3,11 @@ import React from "react";
 export default function Banner() {
   return (
     <div class="banner">
-      <h1 class="welcome">SELAMAT DATANG</h1>
+      <div class="text">
+        <h1>Welcome</h1>
+        <h2>KOMODO RISING STAR Consulting</h2>
+        <h3>Place for freelance developers</h3>
+      </div>
     </div>
   );
 }
