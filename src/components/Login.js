@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import {
   Button,
   Form,
@@ -32,7 +32,7 @@ class Login extends Component {
   submitPost = event => {
     event.preventDefault();
 
-    const { email, password, isLogin, error } = this.state;
+    const { email, password, error, isLogin } = this.state;
     axios
       .post(`https://cobacoba-hayepe.herokuapp.com/user/login`, {
         email,
@@ -40,12 +40,16 @@ class Login extends Component {
       })
       .then(result => {
         console.log(result);
-        this.setState({ isLogin: true });
+        this.setState({ isLogin: result.data.isLoggedIn });
+        // alert(
+        //   `Welcome, ${result.data.getUser.firstName} ${result.data.getUser.lastName} `
+        // );
+        this.props.history.push("/profile");
       })
-      .then(<Redirect to="/profile" />)
       .catch(err => {
         console.log(err);
         this.setState({ error });
+        alert(err);
       });
   };
 
@@ -106,4 +110,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default withRouter(Login);
