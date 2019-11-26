@@ -10,7 +10,10 @@ import {
   Segment
 } from "semantic-ui-react";
 import axios from "axios";
+import { connect } from "react-redux";
+
 import logo from "../image/star.jpeg";
+import { loginSuccess } from "../redux/actions/auth";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -32,19 +35,22 @@ class Login extends Component {
   submitPost = event => {
     event.preventDefault();
 
-    const { email, password, error, isLogin } = this.state;
+    const { email, password, error } = this.state;
     axios
       .post(`https://cobacoba-hayepe.herokuapp.com/user/login`, {
         email,
         password
       })
       .then(result => {
-        console.log(result);
-        this.setState({ isLogin: result.data.isLoggedIn });
-        alert(
-          `Welcome, ${result.data.getUser.firstName} ${result.data.getUser.lastName} `
-        );
-        this.props.history.push("/profile");
+        // console.log(result);
+        // this.setState({ isLogin: result.data.isLoggedIn });
+        if (result.status === 200) {
+          alert(
+            `Welcome, ${result.data.getUser.firstName} ${result.data.getUser.lastName} `
+          );
+          this.props.loginSuccess();
+          this.props.history.push("/profile");
+        }
       })
       .catch(err => {
         console.log(err);
@@ -110,4 +116,4 @@ class Login extends Component {
     );
   }
 }
-export default withRouter(Login);
+export default connect(null, { loginSuccess })(withRouter(Login));
