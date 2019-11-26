@@ -2,13 +2,17 @@ import React from "react";
 import "./App.css";
 // import Login from "./components/Login";
 // import Registration from "./components/Registration";
+import NavAfterLog from "./components/NavAfterLog";
+import BannerAfterLog from "./components/BannerAfterLog"
 
-import Login from "./components/Login";
+// import Login from "./components/Login";
 
 function App() {
   return (
     <div>
-      <Login />
+      {/* <Login /> */}
+      <NavAfterLog/>
+      <BannerAfterLog/>
     </div>
   );
 }
