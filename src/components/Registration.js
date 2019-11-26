@@ -63,7 +63,7 @@ export default class Registration extends Component {
   };
 
   showPassword() {
-    const x = document.getElementsByName("password");
+    const x = typeof input;
     if (x.type === "password") {
       x.type = "text";
     } else {
