@@ -9,7 +9,7 @@ import {
   Segment
 } from "semantic-ui-react";
 import axios from "axios";
-
+import logo from "../image/star.jpeg";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -41,8 +41,16 @@ class Login extends Component {
       .catch(error => console.log(error));
   };
 
+  showPassword() {
+    const x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   render() {
-    const { email, password, error, isLogin } = this.state;
+    const { email, password } = this.state;
     return (
       <Grid
         textAlign="center"
@@ -51,7 +59,7 @@ class Login extends Component {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            <Image src="/logo.png" /> Log-in to your account
+            <Image src={logo} /> Log-in to your account
           </Header>
           <Form size="large">
             <Segment stacked>
@@ -71,10 +79,12 @@ class Login extends Component {
                 placeholder="Password"
                 type="password"
                 name="password"
+                id="password"
                 value={password}
                 onChange={this.handleOnChange}
               />
-
+              <input type="checkbox" onClick={this.showPassword} /> Show
+              Password
               <Button color="teal" fluid size="large" onClick={this.submitPost}>
                 Login
               </Button>
